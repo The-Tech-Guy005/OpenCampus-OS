@@ -22,7 +22,7 @@ export default function Topbar() {
           <input
             type="text"
             placeholder="Search..."
-            className="ml-2 bg-transparent outline-none"
+            className="ml-2 bg-transparent text-slate-800 placeholder:text-slate-500 outline-none"
           />
         </div>
 
@@ -35,11 +35,11 @@ export default function Topbar() {
           <UserCircle2 size={38} className="text-cyan-600" />
 
           <div>
-            <p className="font-semibold">
+            <p className="font-semibold text-slate-800">
               Hriday
             </p>
 
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-600">
               Student
             </p>
           </div>

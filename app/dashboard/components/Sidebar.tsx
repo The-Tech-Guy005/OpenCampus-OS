@@ -30,7 +30,7 @@ export default function Sidebar() {
           </Link>
 
           <Link
-            href="#"
+            href="/dashboard/assignments"
             className="flex items-center gap-3 rounded-xl p-3 hover:bg-slate-800 transition"
           >
             <BookOpen size={20} />
@@ -38,7 +38,7 @@ export default function Sidebar() {
           </Link>
 
           <Link
-            href="#"
+            href="/dashboard/attendance"
             className="flex items-center gap-3 rounded-xl p-3 hover:bg-slate-800 transition"
           >
             <Calendar size={20} />
@@ -46,7 +46,7 @@ export default function Sidebar() {
           </Link>
 
           <Link
-            href="#"
+            href="/dashboard/notes"
             className="flex items-center gap-3 rounded-xl p-3 hover:bg-slate-800 transition"
           >
             <NotebookPen size={20} />
@@ -54,7 +54,7 @@ export default function Sidebar() {
           </Link>
 
           <Link
-            href="#"
+            href="/dashboard/internships"
             className="flex items-center gap-3 rounded-xl p-3 hover:bg-slate-800 transition"
           >
             <BriefcaseBusiness size={20} />
