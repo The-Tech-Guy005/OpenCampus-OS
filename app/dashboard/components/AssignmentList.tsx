@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 import {
   Database,
   Code2,
@@ -5,34 +9,33 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-const assignments = [
-  {
-    title: "DBMS Project",
-    subject: "Database Management Systems",
-    due: "Tomorrow",
-    status: "High Priority",
-    color: "text-red-600 bg-red-100",
-    icon: Database,
-  },
-  {
-    title: "React Assignment",
-    subject: "Web Development",
-    due: "2 Days",
-    status: "Medium",
-    color: "text-yellow-700 bg-yellow-100",
-    icon: Code2,
-  },
-  {
-    title: "OS Lab Report",
-    subject: "Operating Systems",
-    due: "Friday",
-    status: "On Track",
-    color: "text-green-700 bg-green-100",
-    icon: FileText,
-  },
-];
+
 
 export default function AssignmentList() {
+  const [assignments, setAssignments] = useState<any[]>([]);
+
+useEffect(() => {
+  async function fetchAssignments() {
+    const { data, error, count } = await supabase
+      .from("assignments")
+      .select("*", { count: "exact" });
+
+    console.log("COUNT:", count);
+    console.log("DATA:", data);
+    console.log("ERROR:", error);
+
+    console.log("DATA:", data);
+    console.log("ERROR:", error);
+
+    if (data) {
+      setAssignments(data);
+      console.log("Assignments state:", data);
+    }
+  }
+
+  fetchAssignments();
+}, []);
+console.log("Rendering assignments:", assignments);
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
 
@@ -49,7 +52,7 @@ export default function AssignmentList() {
       <div className="space-y-4">
 
         {assignments.map((assignment, index) => {
-          const Icon = assignment.icon;
+          const Icon = FileText;
 
           return (
             <div
@@ -70,14 +73,14 @@ export default function AssignmentList() {
                     </h3>
 
                     <p className="text-sm text-slate-500">
-                      {assignment.subject}
+                      {assignment.course}
                     </p>
                   </div>
 
                 </div>
 
                 <span
-                  className={`rounded-full px-3 py-1 text-xs font-semibold ${assignment.color}`}
+                  className={`rounded-full bg-cyan-100 px-3 py-1 text-xs font-semibold text-cyan-700`}
                 >
                   {assignment.status}
                 </span>
@@ -88,7 +91,7 @@ export default function AssignmentList() {
 
                 <span className="flex items-center gap-2 text-sm text-slate-500">
                   <AlertCircle size={15} />
-                  Due: {assignment.due}
+                  Due: {assignment.due_date}
                 </span>
 
                 <button className="rounded-lg bg-cyan-600 px-3 py-1.5 text-sm font-medium text-white transition hover:bg-cyan-700">
