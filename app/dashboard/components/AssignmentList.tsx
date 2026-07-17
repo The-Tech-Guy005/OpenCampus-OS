@@ -1,28 +1,107 @@
+import {
+  Database,
+  Code2,
+  FileText,
+  AlertCircle,
+} from "lucide-react";
+
+const assignments = [
+  {
+    title: "DBMS Project",
+    subject: "Database Management Systems",
+    due: "Tomorrow",
+    status: "High Priority",
+    color: "text-red-600 bg-red-100",
+    icon: Database,
+  },
+  {
+    title: "React Assignment",
+    subject: "Web Development",
+    due: "2 Days",
+    status: "Medium",
+    color: "text-yellow-700 bg-yellow-100",
+    icon: Code2,
+  },
+  {
+    title: "OS Lab Report",
+    subject: "Operating Systems",
+    due: "Friday",
+    status: "On Track",
+    color: "text-green-700 bg-green-100",
+    icon: FileText,
+  },
+];
+
 export default function AssignmentList() {
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
-      <h2 className="text-2xl font-bold text-slate-800 mb-5">
-        📚 Upcoming Assignments
-      </h2>
+    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+
+      <div className="mb-6 flex items-center justify-between">
+        <h2 className="text-2xl font-bold text-slate-800">
+          📚 Upcoming Assignments
+        </h2>
+
+        <span className="text-sm font-medium text-cyan-600">
+          {assignments.length} Pending
+        </span>
+      </div>
 
       <div className="space-y-4">
 
-        <div className="flex justify-between border-b pb-2">
-          <span className="text-slate-700 font-medium">DBMS Project</span>
-          <span className="text-red-500 font-semibold">Tomorrow</span>
-        </div>
+        {assignments.map((assignment, index) => {
+          const Icon = assignment.icon;
 
-        <div className="flex justify-between border-b pb-2">
-          <span className="text-slate-700 font-medium">React Assignment</span>
-          <span className="text-yellow-600 font-semibold">2 Days</span>
-        </div>
+          return (
+            <div
+              key={index}
+              className="rounded-xl border border-slate-100 p-4 transition-all duration-300 hover:border-cyan-300 hover:shadow-md"
+            >
+              <div className="flex items-start justify-between">
 
-        <div className="flex justify-between">
-          <span className="text-slate-700 font-medium">OS Lab Report</span>
-          <span className="text-green-600 font-semibold">Friday</span>
-        </div>
+                <div className="flex gap-3">
+
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100">
+                    <Icon size={20} className="text-slate-700" />
+                  </div>
+
+                  <div>
+                    <h3 className="font-semibold text-slate-800">
+                      {assignment.title}
+                    </h3>
+
+                    <p className="text-sm text-slate-500">
+                      {assignment.subject}
+                    </p>
+                  </div>
+
+                </div>
+
+                <span
+                  className={`rounded-full px-3 py-1 text-xs font-semibold ${assignment.color}`}
+                >
+                  {assignment.status}
+                </span>
+
+              </div>
+
+              <div className="mt-4 flex items-center justify-between">
+
+                <span className="flex items-center gap-2 text-sm text-slate-500">
+                  <AlertCircle size={15} />
+                  Due: {assignment.due}
+                </span>
+
+                <button className="rounded-lg bg-cyan-600 px-3 py-1.5 text-sm font-medium text-white transition hover:bg-cyan-700">
+                  View
+                </button>
+
+              </div>
+            </div>
+          );
+        })}
 
       </div>
+
     </div>
   );
 }
