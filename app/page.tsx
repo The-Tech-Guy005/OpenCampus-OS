@@ -43,13 +43,23 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="mt-6 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row"
         >
-          <Link href="/dashboard" className="w-full sm:w-auto">
+          <Link href="/register" className="w-full sm:w-auto">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               className="w-full rounded-3xl bg-[#FF8C42] px-10 py-4 font-semibold text-white transition-colors hover:bg-[#ff9d5c] sm:w-auto"
             >
-              Get Started
+              Sign Up
+            </motion.button>
+          </Link>
+
+          <Link href="/login" className="w-full sm:w-auto">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full rounded-3xl border border-white/10 bg-white/5 px-10 py-4 font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10 sm:w-auto"
+            >
+              Sign In
             </motion.button>
           </Link>
 

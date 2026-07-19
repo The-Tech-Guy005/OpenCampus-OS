@@ -1,7 +1,10 @@
+"use client";
+
 import RecentActivity from "./components/RecentActivity";
 import StatCard from "./components/StatCard";
 import Schedule from "./components/Schedule";
 import AssignmentList from "./components/AssignmentList";
+import { useAuth } from "@/lib/AuthContext";
 
 import {
   CalendarCheck,
@@ -13,6 +16,9 @@ import {
 } from "lucide-react";
 
 export default function Dashboard() {
+  const { user } = useAuth();
+  const userName = user?.fullName || "Student";
+
   return (
     <main className="space-y-8">
 
@@ -27,7 +33,7 @@ export default function Dashboard() {
           <div className="max-w-2xl">
 
             <h1 className="text-4xl font-bold">
-              Welcome back, Hriday 👋
+              Welcome back, {userName} 👋
             </h1>
 
             <p className="mt-3 text-cyan-100 text-lg">
